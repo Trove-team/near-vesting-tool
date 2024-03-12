@@ -1,3 +1,95 @@
+# Installation Instructions
+
+1. Install Docker (this will allow you to build the contract without having all of the prerequisites on your machine)
+
+- https://www.docker.com/
+
+- MAKE SURE DOCKER IS RUNNING
+
+2. Install Near CLI
+
+- Run npm install -g near-cli
+
+2. Create a NEAR account to act as the contract owner. Make sure you have >5 NEAR.
+
+- ~5 NEAR is required for contract storage.
+
+- Create a wallet that will own the vesting contract, and a sub account that you will deploy contract to.
+
+3. Run **near create-account subaccount.masteraccount.near --masterAccount masteraccount.near**
+
+- Download the repo files from this github
+ 
+4. Unzip file and place in an accessible location
+
+
+5. Export to mainnet
+
+- Windows: Run  **set NEAR_NETWORK=mainnet**
+
+- Mac: Run **export NEAR_ENV=mainnet**
+
+- Login to both Near wallets from above
+
+6. Run **near login**
+
+    or
+
+- **near login --walletUrl https://app.mynearwallet.com/**
+
+    Can login with meteor wallet if you prefer
+
+- near **login --walletUrl https://wallet.meteorwallet.app/**
+
+7. Navigate to  “near-vesting-tool-main” folder 
+
+- Run **cd desktop**
+
+- Cd near-vesting-tool-main or respective folder name
+
+8. Build contract, once complete .wasm file should show in ./out folder
+
+- Windows
+
+- run build.bat
+
+    or
+
+- Click build.bat file
+
+- Mac
+
+- Run **chmod 777 ./build.sh**
+
+- **./build.sh**
+
+9. Deploy Contract
+
+- Mac - **near deploy  yourwallet.near --wasmFile ./main.wasm**
+
+- Windows - run near deploy yourwallet.near out/main.wasm
+
+- Navigate to and open init.sh or init.bat (depending on your OS) then edit file on lines 5-7 to your appropriate information
+
+- Owner and vesting contract should be different (main account & sub account)
+
+
+
+10. Initialize contract
+
+- **Mac: run chmod 777 ./init.sh**
+
+- **./init.sh**
+
+- Windows: open init.bat
+
+  or
+
+- run **run init.bat**
+
+- Check Near block explorer on to confirm transaction successful
+
+
 # Vesting contract
 
 This contract is responsible for holding Jump tokens that belong to early investors in Jump DeFi throughout their vesting periods.
